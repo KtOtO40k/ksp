@@ -1,12 +1,20 @@
 let cart = [];
 
-
 const products = document.querySelectorAll('.product-card'); 
 const cartItemsContainer = document.getElementById('cart-items'); 
 const totalPriceElement = document.querySelector('.total-price'); 
 const filterButtons = document.querySelectorAll('.filter-btn'); 
 const checkoutBtn = document.getElementById('checkout-btn'); 
 
+const saveCartToStorage = () => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+};
+
+const savedCart = localStorage.getItem('cart');
+if (savedCart) {
+    cart = JSON.parse(savedCart);
+    setTimeout(() => renderCart(), 0);
+}
 
 filterButtons.forEach(button => {
     button.addEventListener('click', () => {
@@ -27,7 +35,6 @@ filterButtons.forEach(button => {
     });
 });
 
-
 document.querySelectorAll('.add-to-cart-btn').forEach((btn, index) => {
     btn.addEventListener('click', (event) => {
         const productCard = event.target.closest('.product-card');
@@ -35,24 +42,19 @@ document.querySelectorAll('.add-to-cart-btn').forEach((btn, index) => {
         const name = productCard.getAttribute('data-name');
         const price = parseInt(productCard.getAttribute('data-price')); 
 
-
         const newProduct = {
             id: Date.now(), 
             name: name,
             price: price
         };
-
         
         cart.push(newProduct);
-        
-       
         renderCart();
+        saveCartToStorage();
     });
 });
 
-
 const renderCart = () => {
-    
     cartItemsContainer.innerHTML = '';
     if (cart.length === 0) {
         cartItemsContainer.innerHTML = '<p>Корзина пуста</p>';
@@ -73,7 +75,6 @@ const renderCart = () => {
     calculateTotal();
 };
 
-
 const calculateTotal = () => {
     let total = 0;
 
@@ -81,12 +82,11 @@ const calculateTotal = () => {
     totalPriceElement.innerText = `Итого: ${total} руб.`;
 };
 
-
 const removeFromCart = (id) => {
     cart = cart.filter(item => item.id !== id);
     renderCart(); 
+    saveCartToStorage();
 };
-
 
 checkoutBtn.addEventListener('click', () => {
     if (cart.length === 0) {
@@ -95,5 +95,6 @@ checkoutBtn.addEventListener('click', () => {
         alert('Покупка прошла успешно! Спасибо за заказ.');
         cart = []; 
         renderCart(); 
+        saveCartToStorage();
     }
 });
