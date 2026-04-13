@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Каталог смартфонов</title>
+</head>
+<body>
+
+    
+    <ul class="menu">
+        <li><a href="index.html">Главная</a></li>
+        <li><a href="catalog.html">Каталог</a></li>
+    </ul>
+    <hr>
+
+    
+    <div class="filters">
+        <button class="filter-btn" data-filter="all">Все модели</button>
+        <button class="filter-btn" data-filter="s26">S26 Series</button>
+        <button class="filter-btn" data-filter="s25">S25 Series</button>
+        <button class="filter-btn" data-filter="s24">S24 Series</button>
+    </div>
+
+    <h2>Каталог смартфонов</h2>
+
+    
+    <div class="catalog-container">
+        
+        
+        <div class="product-card" data-category="s26" data-price="150000" data-name="Samsung Galaxy S26 Ultra">
+            <img src="phone1.jpeg" alt="Samsung S26" width="200">
+            <h3>Samsung Galaxy S26 Ultra</h3>
+            <p>Цена: 150 000 руб.</p>
+            <a href="item1.html" class="details-link">Подробнее</a>
+            
+            <button class="add-to-cart-btn">В корзину</button>
+        </div>
+
+        
+        <div class="product-card" data-category="s25" data-price="120000" data-name="Samsung Galaxy S25 Ultra">
+            <img src="phone2.jpg" alt="Samsung S25" width="200">
+            <h3>Samsung Galaxy S25 Ultra</h3>
+            <p>Цена: 120 000 руб.</p>
+            <a href="item2.html" class="details-link">Подробнее</a>
+            <button class="add-to-cart-btn">В корзину</button>
+        </div>
+
+        
+        <div class="product-card" data-category="s24" data-price="90000" data-name="Samsung Galaxy S24 Ultra">
+            <img src="phone3.jpg" alt="Samsung S24" width="200">
+            <h3>Samsung Galaxy S24 Ultra</h3>
+            <p>Цена: 90 000 руб.</p>
+            <a href="item3.html" class="details-link">Подробнее</a>
+            <button class="add-to-cart-btn">В корзину</button>
+        </div>
+
+    </div>
+
+    <hr>
+
+    
+    <div class="cart-section">
+        <h2>Ваша корзина</h2>
+        
+        <div id="cart-items">
+            <p>Корзина пуста</p>
+        </div>
+        
+        <p class="total-price">Итого: 0 руб.</p>
+        
+        <button id="checkout-btn">Оплатить заказ</button>
+    </div>
+
+    <hr>
+    <footer>
+        <p>&copy; Все права защищены</p>
+    </footer>
+
+    
+    <script src="script.js"></script>
+
+</body>
+</html>
